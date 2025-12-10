@@ -1,7 +1,7 @@
 # Релизы Кототиндер
 
 
-📦 [kototinder-v1.0.0.apk](https://disk.yandex.ru/d/OwJMXvFI1w2RWQ)
+📦 [kototinder-v1.0.0.apk](https://disk.yandex.ru/d/svk71XRcob1HsA)
 
 ### Технические детали:
 - Flutter SDK: 3.10.3+
