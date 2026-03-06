@@ -41,8 +41,9 @@ class AuthProvider with ChangeNotifier {
   void _listenToAuthChanges() {
     authRepository.authStateChanges.listen((user) {
       _user = user;
-      _state =
-          user != null ? AuthState.authenticated : AuthState.unauthenticated;
+      _state = user != null
+          ? AuthState.authenticated
+          : AuthState.unauthenticated;
       notifyListeners();
     });
   }
@@ -50,8 +51,9 @@ class AuthProvider with ChangeNotifier {
   Future<void> _checkCurrentUser() async {
     try {
       _user = await getCurrentUserUseCase();
-      _state =
-          _user != null ? AuthState.authenticated : AuthState.unauthenticated;
+      _state = _user != null
+          ? AuthState.authenticated
+          : AuthState.unauthenticated;
     } catch (e) {
       _state = AuthState.unauthenticated;
     }
@@ -79,7 +81,10 @@ class AuthProvider with ChangeNotifier {
   }
 
   Future<void> signUp(
-      String email, String password, String confirmPassword) async {
+    String email,
+    String password,
+    String confirmPassword,
+  ) async {
     _state = AuthState.loading;
     _errorMessage = null;
     notifyListeners();

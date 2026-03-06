@@ -27,8 +27,9 @@ void main() {
     );
 
     test('should sign in successfully with valid credentials', () async {
-      when(mockAuthRepository.signIn(testEmail, testPassword))
-          .thenAnswer((_) async => testUser);
+      when(
+        mockAuthRepository.signIn(testEmail, testPassword),
+      ).thenAnswer((_) async => testUser);
 
       final result = await useCase(testEmail, testPassword);
 
@@ -40,11 +41,13 @@ void main() {
     test('should throw exception when email is empty', () async {
       expect(
         () => useCase('', testPassword),
-        throwsA(isA<Exception>().having(
-          (e) => e.toString(),
-          'message',
-          contains('Email и пароль не могут быть пустыми'),
-        )),
+        throwsA(
+          isA<Exception>().having(
+            (e) => e.toString(),
+            'message',
+            contains('Email и пароль не могут быть пустыми'),
+          ),
+        ),
       );
 
       verifyNever(mockAuthRepository.signIn(any, any));
@@ -53,11 +56,13 @@ void main() {
     test('should throw exception when password is empty', () async {
       expect(
         () => useCase(testEmail, ''),
-        throwsA(isA<Exception>().having(
-          (e) => e.toString(),
-          'message',
-          contains('Email и пароль не могут быть пустыми'),
-        )),
+        throwsA(
+          isA<Exception>().having(
+            (e) => e.toString(),
+            'message',
+            contains('Email и пароль не могут быть пустыми'),
+          ),
+        ),
       );
 
       verifyNever(mockAuthRepository.signIn(any, any));
@@ -66,11 +71,13 @@ void main() {
     test('should throw exception when email format is invalid', () async {
       expect(
         () => useCase('invalid-email', testPassword),
-        throwsA(isA<Exception>().having(
-          (e) => e.toString(),
-          'message',
-          contains('Некорректный формат email'),
-        )),
+        throwsA(
+          isA<Exception>().having(
+            (e) => e.toString(),
+            'message',
+            contains('Некорректный формат email'),
+          ),
+        ),
       );
 
       verifyNever(mockAuthRepository.signIn(any, any));
@@ -79,27 +86,32 @@ void main() {
     test('should throw exception when password is too short', () async {
       expect(
         () => useCase(testEmail, '12345'),
-        throwsA(isA<Exception>().having(
-          (e) => e.toString(),
-          'message',
-          contains('Пароль должен содержать минимум 6 символов'),
-        )),
+        throwsA(
+          isA<Exception>().having(
+            (e) => e.toString(),
+            'message',
+            contains('Пароль должен содержать минимум 6 символов'),
+          ),
+        ),
       );
 
       verifyNever(mockAuthRepository.signIn(any, any));
     });
 
     test('should propagate repository errors', () async {
-      when(mockAuthRepository.signIn(testEmail, testPassword))
-          .thenThrow(Exception('Network error'));
+      when(
+        mockAuthRepository.signIn(testEmail, testPassword),
+      ).thenThrow(Exception('Network error'));
 
       expect(
         () => useCase(testEmail, testPassword),
-        throwsA(isA<Exception>().having(
-          (e) => e.toString(),
-          'message',
-          contains('Network error'),
-        )),
+        throwsA(
+          isA<Exception>().having(
+            (e) => e.toString(),
+            'message',
+            contains('Network error'),
+          ),
+        ),
       );
 
       verify(mockAuthRepository.signIn(testEmail, testPassword));

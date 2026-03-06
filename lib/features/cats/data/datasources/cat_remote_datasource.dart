@@ -15,15 +15,16 @@ class CatRemoteDataSourceImpl implements CatRemoteDataSource {
   static const String? apiKey = null;
 
   CatRemoteDataSourceImpl({Dio? dio})
-      : dio = dio ??
-            Dio(
-              BaseOptions(
-                baseUrl: baseUrl,
-                connectTimeout: const Duration(seconds: 10),
-                receiveTimeout: const Duration(seconds: 10),
-                headers: apiKey != null ? {'x-api-key': apiKey} : null,
-              ),
-            );
+    : dio =
+          dio ??
+          Dio(
+            BaseOptions(
+              baseUrl: baseUrl,
+              connectTimeout: const Duration(seconds: 10),
+              receiveTimeout: const Duration(seconds: 10),
+              headers: apiKey != null ? {'x-api-key': apiKey} : null,
+            ),
+          );
 
   @override
   Future<CatImageModel> getRandomCatWithBreed() async {

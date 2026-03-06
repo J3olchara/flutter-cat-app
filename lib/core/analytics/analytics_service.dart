@@ -4,7 +4,7 @@ class AnalyticsService {
   final FirebaseAnalytics _analytics;
 
   AnalyticsService({FirebaseAnalytics? analytics})
-      : _analytics = analytics ?? FirebaseAnalytics.instance;
+    : _analytics = analytics ?? FirebaseAnalytics.instance;
 
   FirebaseAnalyticsObserver getAnalyticsObserver() {
     return FirebaseAnalyticsObserver(analytics: _analytics);
@@ -13,9 +13,7 @@ class AnalyticsService {
   Future<void> logLoginSuccess() async {
     await _analytics.logEvent(
       name: 'login_success',
-      parameters: {
-        'timestamp': DateTime.now().toIso8601String(),
-      },
+      parameters: {'timestamp': DateTime.now().toIso8601String()},
     );
   }
 
@@ -32,9 +30,7 @@ class AnalyticsService {
   Future<void> logSignupSuccess() async {
     await _analytics.logEvent(
       name: 'signup_success',
-      parameters: {
-        'timestamp': DateTime.now().toIso8601String(),
-      },
+      parameters: {'timestamp': DateTime.now().toIso8601String()},
     );
   }
 
@@ -51,9 +47,7 @@ class AnalyticsService {
   Future<void> logOnboardingCompleted() async {
     await _analytics.logEvent(
       name: 'onboarding_completed',
-      parameters: {
-        'timestamp': DateTime.now().toIso8601String(),
-      },
+      parameters: {'timestamp': DateTime.now().toIso8601String()},
     );
   }
 
@@ -78,8 +72,6 @@ class AnalyticsService {
   }
 
   Future<void> logScreenView(String screenName) async {
-    await _analytics.logScreenView(
-      screenName: screenName,
-    );
+    await _analytics.logScreenView(screenName: screenName);
   }
 }

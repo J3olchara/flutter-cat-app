@@ -19,9 +19,7 @@ void main() {
   Widget createSignUpScreen() {
     return ChangeNotifierProvider<AuthProvider>.value(
       value: mockAuthProvider,
-      child: const MaterialApp(
-        home: SignUpScreen(),
-      ),
+      child: const MaterialApp(home: SignUpScreen()),
     );
   }
 
@@ -38,8 +36,9 @@ void main() {
       expect(find.text('Войти'), findsOneWidget);
     });
 
-    testWidgets('should show validation error for empty fields',
-        (tester) async {
+    testWidgets('should show validation error for empty fields', (
+      tester,
+    ) async {
       when(mockAuthProvider.state).thenReturn(AuthState.unauthenticated);
 
       await tester.pumpWidget(createSignUpScreen());
@@ -53,14 +52,17 @@ void main() {
       expect(find.text('Пожалуйста, подтвердите пароль'), findsOneWidget);
     });
 
-    testWidgets('should show validation error when passwords do not match',
-        (tester) async {
+    testWidgets('should show validation error when passwords do not match', (
+      tester,
+    ) async {
       when(mockAuthProvider.state).thenReturn(AuthState.unauthenticated);
 
       await tester.pumpWidget(createSignUpScreen());
 
       await tester.enterText(
-          find.byType(TextFormField).at(0), 'test@example.com');
+        find.byType(TextFormField).at(0),
+        'test@example.com',
+      );
       await tester.enterText(find.byType(TextFormField).at(1), 'password123');
       await tester.enterText(find.byType(TextFormField).at(2), 'different123');
 
@@ -70,8 +72,9 @@ void main() {
       expect(find.text('Пароли не совпадают'), findsOneWidget);
     });
 
-    testWidgets('should show validation error for invalid email format',
-        (tester) async {
+    testWidgets('should show validation error for invalid email format', (
+      tester,
+    ) async {
       when(mockAuthProvider.state).thenReturn(AuthState.unauthenticated);
 
       await tester.pumpWidget(createSignUpScreen());
@@ -86,22 +89,27 @@ void main() {
       expect(find.text('Некорректный формат email'), findsOneWidget);
     });
 
-    testWidgets('should show validation error for short password',
-        (tester) async {
+    testWidgets('should show validation error for short password', (
+      tester,
+    ) async {
       when(mockAuthProvider.state).thenReturn(AuthState.unauthenticated);
 
       await tester.pumpWidget(createSignUpScreen());
 
       await tester.enterText(
-          find.byType(TextFormField).at(0), 'test@example.com');
+        find.byType(TextFormField).at(0),
+        'test@example.com',
+      );
       await tester.enterText(find.byType(TextFormField).at(1), '12345');
       await tester.enterText(find.byType(TextFormField).at(2), '12345');
 
       await tester.tap(find.text('Зарегистрироваться'));
       await tester.pump();
 
-      expect(find.text('Пароль должен содержать минимум 6 символов'),
-          findsOneWidget);
+      expect(
+        find.text('Пароль должен содержать минимум 6 символов'),
+        findsOneWidget,
+      );
     });
 
     testWidgets('should call signUp with valid credentials', (tester) async {
@@ -111,20 +119,27 @@ void main() {
       await tester.pumpWidget(createSignUpScreen());
 
       await tester.enterText(
-          find.byType(TextFormField).at(0), 'test@example.com');
+        find.byType(TextFormField).at(0),
+        'test@example.com',
+      );
       await tester.enterText(find.byType(TextFormField).at(1), 'password123');
       await tester.enterText(find.byType(TextFormField).at(2), 'password123');
 
       await tester.tap(find.text('Зарегистрироваться'));
       await tester.pump();
 
-      verify(mockAuthProvider.signUp(
-              'test@example.com', 'password123', 'password123'))
-          .called(1);
+      verify(
+        mockAuthProvider.signUp(
+          'test@example.com',
+          'password123',
+          'password123',
+        ),
+      ).called(1);
     });
 
-    testWidgets('should show loading indicator when signing up',
-        (tester) async {
+    testWidgets('should show loading indicator when signing up', (
+      tester,
+    ) async {
       when(mockAuthProvider.state).thenReturn(AuthState.loading);
 
       await tester.pumpWidget(createSignUpScreen());

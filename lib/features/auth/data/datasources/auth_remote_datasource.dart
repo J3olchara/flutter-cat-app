@@ -13,7 +13,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   final firebase_auth.FirebaseAuth firebaseAuth;
 
   AuthRemoteDataSourceImpl({firebase_auth.FirebaseAuth? firebaseAuth})
-      : firebaseAuth = firebaseAuth ?? firebase_auth.FirebaseAuth.instance;
+    : firebaseAuth = firebaseAuth ?? firebase_auth.FirebaseAuth.instance;
 
   @override
   Future<UserModel> signIn(String email, String password) async {
@@ -80,7 +80,8 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   }
 
   Exception _handleFirebaseAuthException(
-      firebase_auth.FirebaseAuthException e) {
+    firebase_auth.FirebaseAuthException e,
+  ) {
     switch (e.code) {
       case 'user-not-found':
         return Exception('Пользователь с таким email не найден');

@@ -7,7 +7,10 @@ class SignUpUseCase {
   SignUpUseCase(this.repository);
 
   Future<User> call(
-      String email, String password, String confirmPassword) async {
+    String email,
+    String password,
+    String confirmPassword,
+  ) async {
     if (email.isEmpty || password.isEmpty || confirmPassword.isEmpty) {
       throw Exception('Все поля обязательны для заполнения');
     }

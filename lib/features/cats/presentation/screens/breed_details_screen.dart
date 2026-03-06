@@ -57,8 +57,8 @@ class _BreedDetailsScreenState extends State<BreedDetailsScreen> {
                   Text(
                     widget.breed.name,
                     style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                          fontWeight: FontWeight.bold,
-                        ),
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                   const SizedBox(height: 8),
                   if (widget.breed.origin != null)
@@ -72,9 +72,7 @@ class _BreedDetailsScreenState extends State<BreedDetailsScreen> {
                         const SizedBox(width: 4),
                         Text(
                           widget.breed.origin!,
-                          style: Theme.of(context)
-                              .textTheme
-                              .titleMedium
+                          style: Theme.of(context).textTheme.titleMedium
                               ?.copyWith(color: Colors.grey[700]),
                         ),
                       ],

@@ -26,8 +26,8 @@ class BreedListItem extends StatelessWidget {
                     child: Text(
                       breed.name,
                       style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                            fontWeight: FontWeight.bold,
-                          ),
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                   const Icon(Icons.chevron_right),

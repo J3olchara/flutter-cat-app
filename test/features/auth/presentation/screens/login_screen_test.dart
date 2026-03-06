@@ -19,9 +19,7 @@ void main() {
   Widget createLoginScreen() {
     return ChangeNotifierProvider<AuthProvider>.value(
       value: mockAuthProvider,
-      child: const MaterialApp(
-        home: LoginScreen(),
-      ),
+      child: const MaterialApp(home: LoginScreen()),
     );
   }
 
@@ -50,8 +48,9 @@ void main() {
       expect(find.text('Пожалуйста, введите email'), findsOneWidget);
     });
 
-    testWidgets('should show validation error for invalid email format',
-        (tester) async {
+    testWidgets('should show validation error for invalid email format', (
+      tester,
+    ) async {
       when(mockAuthProvider.state).thenReturn(AuthState.unauthenticated);
 
       await tester.pumpWidget(createLoginScreen());
@@ -63,34 +62,42 @@ void main() {
       expect(find.text('Некорректный формат email'), findsOneWidget);
     });
 
-    testWidgets('should show validation error for empty password',
-        (tester) async {
+    testWidgets('should show validation error for empty password', (
+      tester,
+    ) async {
       when(mockAuthProvider.state).thenReturn(AuthState.unauthenticated);
 
       await tester.pumpWidget(createLoginScreen());
 
       await tester.enterText(
-          find.byType(TextFormField).at(0), 'test@example.com');
+        find.byType(TextFormField).at(0),
+        'test@example.com',
+      );
       await tester.tap(find.text('Войти'));
       await tester.pump();
 
       expect(find.text('Пожалуйста, введите пароль'), findsOneWidget);
     });
 
-    testWidgets('should show validation error for short password',
-        (tester) async {
+    testWidgets('should show validation error for short password', (
+      tester,
+    ) async {
       when(mockAuthProvider.state).thenReturn(AuthState.unauthenticated);
 
       await tester.pumpWidget(createLoginScreen());
 
       await tester.enterText(
-          find.byType(TextFormField).at(0), 'test@example.com');
+        find.byType(TextFormField).at(0),
+        'test@example.com',
+      );
       await tester.enterText(find.byType(TextFormField).at(1), '12345');
       await tester.tap(find.text('Войти'));
       await tester.pump();
 
-      expect(find.text('Пароль должен содержать минимум 6 символов'),
-          findsOneWidget);
+      expect(
+        find.text('Пароль должен содержать минимум 6 символов'),
+        findsOneWidget,
+      );
     });
 
     testWidgets('should call signIn with valid credentials', (tester) async {
@@ -100,18 +107,22 @@ void main() {
       await tester.pumpWidget(createLoginScreen());
 
       await tester.enterText(
-          find.byType(TextFormField).at(0), 'test@example.com');
+        find.byType(TextFormField).at(0),
+        'test@example.com',
+      );
       await tester.enterText(find.byType(TextFormField).at(1), 'password123');
 
       await tester.tap(find.text('Войти'));
       await tester.pump();
 
-      verify(mockAuthProvider.signIn('test@example.com', 'password123'))
-          .called(1);
+      verify(
+        mockAuthProvider.signIn('test@example.com', 'password123'),
+      ).called(1);
     });
 
-    testWidgets('should show loading indicator when signing in',
-        (tester) async {
+    testWidgets('should show loading indicator when signing in', (
+      tester,
+    ) async {
       when(mockAuthProvider.state).thenReturn(AuthState.loading);
 
       await tester.pumpWidget(createLoginScreen());

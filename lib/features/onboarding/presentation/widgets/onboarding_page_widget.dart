@@ -16,18 +16,18 @@ class OnboardingPageWidget extends StatelessWidget {
           Text(
             page.title,
             style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                  fontWeight: FontWeight.bold,
-                  color: Colors.pink,
-                ),
+              fontWeight: FontWeight.bold,
+              color: Colors.pink,
+            ),
             textAlign: TextAlign.center,
           ),
           const SizedBox(height: 16),
           Text(
             page.description,
             style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                  color: Colors.grey[700],
-                  height: 1.5,
-                ),
+              color: Colors.grey[700],
+              height: 1.5,
+            ),
             textAlign: TextAlign.center,
           ),
         ],

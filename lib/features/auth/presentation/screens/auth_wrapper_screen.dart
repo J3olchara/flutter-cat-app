@@ -52,11 +52,7 @@ class _AuthWrapperScreenState extends State<AuthWrapperScreen> {
   @override
   Widget build(BuildContext context) {
     if (_isLoading) {
-      return const Scaffold(
-        body: Center(
-          child: CircularProgressIndicator(),
-        ),
-      );
+      return const Scaffold(body: Center(child: CircularProgressIndicator()));
     }
 
     if (!_isOnboardingCompleted) {
@@ -67,9 +63,7 @@ class _AuthWrapperScreenState extends State<AuthWrapperScreen> {
       builder: (context, authProvider, child) {
         if (authProvider.state == AuthState.initial) {
           return const Scaffold(
-            body: Center(
-              child: CircularProgressIndicator(),
-            ),
+            body: Center(child: CircularProgressIndicator()),
           );
         }
 

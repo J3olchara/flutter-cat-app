@@ -11,13 +11,13 @@ class FirebaseMessagingService {
 
   static const AndroidNotificationChannel _androidChannel =
       AndroidNotificationChannel(
-    'high_importance_channel',
-    'Важные уведомления',
-    description: 'Канал для важных push-уведомлений',
-    importance: Importance.high,
-    playSound: true,
-    enableVibration: true,
-  );
+        'high_importance_channel',
+        'Важные уведомления',
+        description: 'Канал для важных push-уведомлений',
+        importance: Importance.high,
+        playSound: true,
+        enableVibration: true,
+      );
 
   Future<void> initialize() async {
     await _requestPermissions();
@@ -44,14 +44,16 @@ class FirebaseMessagingService {
     } else if (Platform.isAndroid) {
       await _localNotifications
           .resolvePlatformSpecificImplementation<
-              AndroidFlutterLocalNotificationsPlugin>()
+            AndroidFlutterLocalNotificationsPlugin
+          >()
           ?.requestNotificationsPermission();
     }
   }
 
   Future<void> _initializeLocalNotifications() async {
-    const androidSettings =
-        AndroidInitializationSettings('@mipmap/ic_launcher');
+    const androidSettings = AndroidInitializationSettings(
+      '@mipmap/ic_launcher',
+    );
     const iosSettings = DarwinInitializationSettings(
       requestAlertPermission: true,
       requestBadgePermission: true,
@@ -71,7 +73,8 @@ class FirebaseMessagingService {
     if (Platform.isAndroid) {
       await _localNotifications
           .resolvePlatformSpecificImplementation<
-              AndroidFlutterLocalNotificationsPlugin>()
+            AndroidFlutterLocalNotificationsPlugin
+          >()
           ?.createNotificationChannel(_androidChannel);
     }
   }

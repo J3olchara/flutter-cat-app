@@ -39,13 +39,12 @@ class _PasswordFieldState extends State<PasswordField> {
             });
           },
         ),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
-        ),
+        border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
         filled: true,
         fillColor: Colors.grey[50],
       ),
-      validator: widget.validator ??
+      validator:
+          widget.validator ??
           (value) {
             if (value == null || value.isEmpty) {
               return 'Пожалуйста, введите пароль';

@@ -4,11 +4,7 @@ class EmailField extends StatelessWidget {
   final TextEditingController controller;
   final String? labelText;
 
-  const EmailField({
-    super.key,
-    required this.controller,
-    this.labelText,
-  });
+  const EmailField({super.key, required this.controller, this.labelText});
 
   @override
   Widget build(BuildContext context) {
@@ -18,9 +14,7 @@ class EmailField extends StatelessWidget {
       decoration: InputDecoration(
         labelText: labelText ?? 'Email',
         prefixIcon: const Icon(Icons.email_outlined),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
-        ),
+        border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
         filled: true,
         fillColor: Colors.grey[50],
       ),
