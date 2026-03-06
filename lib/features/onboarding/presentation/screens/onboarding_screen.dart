@@ -138,9 +138,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         ),
                       ),
                       child: Text(
-                        _currentPage == _pages.length - 1
-                            ? 'Начать'
-                            : 'Далее',
+                        _currentPage == _pages.length - 1 ? 'Начать' : 'Далее',
                         style: const TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,

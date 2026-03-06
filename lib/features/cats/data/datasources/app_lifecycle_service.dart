@@ -6,7 +6,7 @@ class AppLifecycleService with WidgetsBindingObserver {
   final FlutterLocalNotificationsPlugin _localNotifications;
   Timer? _reEngagementTimer;
   DateTime? _backgroundTime;
-  
+
   static const _reEngagementDelaySeconds = 30;
 
   AppLifecycleService(this._localNotifications) {
@@ -16,7 +16,7 @@ class AppLifecycleService with WidgetsBindingObserver {
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
     super.didChangeAppLifecycleState(state);
-    
+
     switch (state) {
       case AppLifecycleState.paused:
       case AppLifecycleState.hidden:
@@ -34,7 +34,7 @@ class AppLifecycleService with WidgetsBindingObserver {
   void _onAppGoesToBackground() {
     print('Приложение ушло в фон');
     _backgroundTime = DateTime.now();
-    
+
     _reEngagementTimer?.cancel();
     _reEngagementTimer = Timer(
       Duration(seconds: _reEngagementDelaySeconds),
@@ -44,10 +44,10 @@ class AppLifecycleService with WidgetsBindingObserver {
 
   void _onAppReturnsToForeground() {
     print('Приложение вернулось на передний план');
-    
+
     _reEngagementTimer?.cancel();
     _reEngagementTimer = null;
-    
+
     if (_backgroundTime != null) {
       final duration = DateTime.now().difference(_backgroundTime!);
       print('Пользователь вернулся через ${duration.inSeconds} секунд');
@@ -57,7 +57,7 @@ class AppLifecycleService with WidgetsBindingObserver {
 
   Future<void> _showReEngagementNotification() async {
     print('Показываем уведомление для возврата пользователя');
-    
+
     const androidDetails = AndroidNotificationDetails(
       'high_importance_channel',
       'Важные уведомления',

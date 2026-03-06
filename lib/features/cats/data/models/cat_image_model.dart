@@ -17,7 +17,8 @@ class CatImageModel extends CatImage {
       width: json['width'] as int?,
       height: json['height'] as int?,
       breeds: (json['breeds'] as List<dynamic>?)
-              ?.map((breed) => CatBreedModel.fromJson(breed as Map<String, dynamic>))
+              ?.map((breed) =>
+                  CatBreedModel.fromJson(breed as Map<String, dynamic>))
               .toList() ??
           [],
     );

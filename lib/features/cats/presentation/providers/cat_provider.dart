@@ -111,10 +111,10 @@ class CatProvider with ChangeNotifier {
     try {
       await likeCatUseCase(_currentCat!.id);
       _likesCount = await getLikesCountUseCase();
-      
+
       final breedName = _currentCat!.primaryBreed?.name ?? 'Unknown';
       await analyticsService.logCatLiked(breedName);
-      
+
       debugPrint('Cat liked! Total: $_likesCount');
       notifyListeners();
       await loadNextCat();

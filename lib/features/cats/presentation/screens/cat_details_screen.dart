@@ -73,7 +73,6 @@ class CatDetailsScreen extends StatelessWidget {
                       ],
                     ),
                     const SizedBox(height: 16),
-
                     if (breed.description != null)
                       _buildInfoCard(
                         context,
@@ -87,7 +86,6 @@ class CatDetailsScreen extends StatelessWidget {
                         ],
                       ),
                     const SizedBox(height: 16),
-
                     if (breed.temperament != null)
                       _buildInfoCard(
                         context,
@@ -110,7 +108,6 @@ class CatDetailsScreen extends StatelessWidget {
                         ],
                       ),
                     const SizedBox(height: 16),
-
                     _buildInfoCard(
                       context,
                       icon: Icons.bar_chart,
@@ -142,7 +139,6 @@ class CatDetailsScreen extends StatelessWidget {
                           ),
                       ],
                     ),
-
                     if (breed.wikipediaUrl != null) ...[
                       const SizedBox(height: 16),
                       Center(

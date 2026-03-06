@@ -10,7 +10,7 @@ import '../../../cats/presentation/screens/tab_bar_screen.dart';
 
 class AuthWrapperScreen extends StatefulWidget {
   final AnalyticsService analyticsService;
-  
+
   const AuthWrapperScreen({super.key, required this.analyticsService});
 
   @override

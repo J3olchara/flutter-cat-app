@@ -85,8 +85,8 @@ class _BreedsListScreenState extends State<BreedsListScreen> {
                       (breed.origin?.toLowerCase().contains(_searchQuery) ??
                           false) ||
                       (breed.temperament?.toLowerCase().contains(
-                            _searchQuery,
-                          ) ??
+                                _searchQuery,
+                              ) ??
                           false);
                 }).toList();
 

@@ -33,7 +33,7 @@ class InjectionContainer {
 
   late final AuthRemoteDataSource _authRemoteDataSource;
   late final AuthRepository _authRepository;
-  
+
   late final AnalyticsService _analyticsService;
 
   void init() {
@@ -45,10 +45,10 @@ class InjectionContainer {
 
     _authRemoteDataSource = AuthRemoteDataSourceImpl();
     _authRepository = AuthRepositoryImpl(_authRemoteDataSource);
-    
+
     _analyticsService = AnalyticsService();
   }
-  
+
   AnalyticsService get analyticsService => _analyticsService;
 
   CatProvider createCatProvider() {

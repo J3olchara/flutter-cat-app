@@ -89,8 +89,8 @@ void main() {
       await tester.tap(find.text('Войти'));
       await tester.pump();
 
-      expect(
-          find.text('Пароль должен содержать минимум 6 символов'), findsOneWidget);
+      expect(find.text('Пароль должен содержать минимум 6 символов'),
+          findsOneWidget);
     });
 
     testWidgets('should call signIn with valid credentials', (tester) async {
@@ -101,9 +101,8 @@ void main() {
 
       await tester.enterText(
           find.byType(TextFormField).at(0), 'test@example.com');
-      await tester.enterText(
-          find.byType(TextFormField).at(1), 'password123');
-      
+      await tester.enterText(find.byType(TextFormField).at(1), 'password123');
+
       await tester.tap(find.text('Войти'));
       await tester.pump();
 

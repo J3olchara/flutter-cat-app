@@ -23,7 +23,7 @@ class FirebaseMessagingService {
     await _requestPermissions();
     await _initializeLocalNotifications();
     await _configureFCM();
-    
+
     final token = await getToken();
     if (token != null) {
       print('FCM Token: $token');
@@ -50,7 +50,8 @@ class FirebaseMessagingService {
   }
 
   Future<void> _initializeLocalNotifications() async {
-    const androidSettings = AndroidInitializationSettings('@mipmap/ic_launcher');
+    const androidSettings =
+        AndroidInitializationSettings('@mipmap/ic_launcher');
     const iosSettings = DarwinInitializationSettings(
       requestAlertPermission: true,
       requestBadgePermission: true,
@@ -78,7 +79,7 @@ class FirebaseMessagingService {
   Future<void> _configureFCM() async {
     FirebaseMessaging.onMessage.listen(_handleForegroundMessage);
     FirebaseMessaging.onMessageOpenedApp.listen(_handleBackgroundTap);
-    
+
     final initialMessage = await _firebaseMessaging.getInitialMessage();
     if (initialMessage != null) {
       _handleBackgroundTap(initialMessage);
@@ -87,7 +88,7 @@ class FirebaseMessagingService {
 
   void _handleForegroundMessage(RemoteMessage message) {
     print('Получено уведомление на переднем плане: ${message.messageId}');
-    
+
     final notification = message.notification;
 
     if (notification != null) {
@@ -172,16 +173,16 @@ class FirebaseMessagingService {
 
   Future<void> scheduleWelcomeNotification({int delaySeconds = 15}) async {
     await Future.delayed(Duration(seconds: delaySeconds));
-    
+
     await _showLocalNotification(
       title: 'Привет, котолюбитель! 🐱',
-      body: 'Не забудь посмотреть на милых котиков сегодня! Свайпай вправо, если понравился ❤️',
+      body:
+          'Не забудь посмотреть на милых котиков сегодня! Свайпай вправо, если понравился ❤️',
       payload: 'welcome_notification',
     );
   }
 
-  void dispose() {
-  }
+  void dispose() {}
 }
 
 @pragma('vm:entry-point')

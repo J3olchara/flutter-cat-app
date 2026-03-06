@@ -13,27 +13,27 @@ late AppLifecycleService _lifecycleService;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  
+
   final di = InjectionContainer();
   di.init();
-  
+
   await Firebase.initializeApp();
-  
+
   FirebaseMessaging.onBackgroundMessage(firebaseMessagingBackgroundHandler);
-  
+
   final messagingService = FirebaseMessagingService();
   await messagingService.initialize();
-  
+
   _lifecycleService = AppLifecycleService(messagingService.localNotifications);
-  
+
   messagingService.scheduleWelcomeNotification(delaySeconds: 15);
-  
+
   runApp(MyApp(di: di));
 }
 
 class MyApp extends StatelessWidget {
   final InjectionContainer di;
-  
+
   const MyApp({super.key, required this.di});
 
   @override

@@ -120,8 +120,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) =>
-                                  CatDetailsScreen(cat: cat),
+                              builder: (context) => CatDetailsScreen(cat: cat),
                             ),
                           );
                         },
@@ -138,18 +137,16 @@ class _HomeScreenState extends State<HomeScreen> {
                                   child: CachedNetworkImage(
                                     imageUrl: cat.url,
                                     fit: BoxFit.cover,
-                                    placeholder: (context, url) =>
-                                        const Center(
-                                          child:
-                                              CircularProgressIndicator(),
-                                        ),
+                                    placeholder: (context, url) => const Center(
+                                      child: CircularProgressIndicator(),
+                                    ),
                                     errorWidget: (context, url, error) =>
                                         const Center(
-                                          child: Icon(
-                                            Icons.error,
-                                            size: 50,
-                                          ),
-                                        ),
+                                      child: Icon(
+                                        Icons.error,
+                                        size: 50,
+                                      ),
+                                    ),
                                   ),
                                 ),
                                 Positioned(

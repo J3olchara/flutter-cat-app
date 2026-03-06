@@ -27,7 +27,7 @@ import 'package:mockito/mockito.dart' as _i1;
 
 class _FakeUser_0 extends _i1.SmartFake implements _i2.User {
   _FakeUser_0(Object parent, Invocation parentInvocation)
-    : super(parent, parentInvocation);
+      : super(parent, parentInvocation);
 }
 
 /// A class which mocks [AuthRepository].
@@ -39,47 +39,39 @@ class MockAuthRepository extends _i1.Mock implements _i3.AuthRepository {
   }
 
   @override
-  _i4.Stream<_i2.User?> get authStateChanges =>
-      (super.noSuchMethod(
-            Invocation.getter(#authStateChanges),
-            returnValue: _i4.Stream<_i2.User?>.empty(),
-          )
-          as _i4.Stream<_i2.User?>);
+  _i4.Stream<_i2.User?> get authStateChanges => (super.noSuchMethod(
+        Invocation.getter(#authStateChanges),
+        returnValue: _i4.Stream<_i2.User?>.empty(),
+      ) as _i4.Stream<_i2.User?>);
 
   @override
   _i4.Future<_i2.User> signIn(String? email, String? password) =>
       (super.noSuchMethod(
-            Invocation.method(#signIn, [email, password]),
-            returnValue: _i4.Future<_i2.User>.value(
-              _FakeUser_0(this, Invocation.method(#signIn, [email, password])),
-            ),
-          )
-          as _i4.Future<_i2.User>);
+        Invocation.method(#signIn, [email, password]),
+        returnValue: _i4.Future<_i2.User>.value(
+          _FakeUser_0(this, Invocation.method(#signIn, [email, password])),
+        ),
+      ) as _i4.Future<_i2.User>);
 
   @override
   _i4.Future<_i2.User> signUp(String? email, String? password) =>
       (super.noSuchMethod(
-            Invocation.method(#signUp, [email, password]),
-            returnValue: _i4.Future<_i2.User>.value(
-              _FakeUser_0(this, Invocation.method(#signUp, [email, password])),
-            ),
-          )
-          as _i4.Future<_i2.User>);
+        Invocation.method(#signUp, [email, password]),
+        returnValue: _i4.Future<_i2.User>.value(
+          _FakeUser_0(this, Invocation.method(#signUp, [email, password])),
+        ),
+      ) as _i4.Future<_i2.User>);
 
   @override
-  _i4.Future<void> signOut() =>
-      (super.noSuchMethod(
-            Invocation.method(#signOut, []),
-            returnValue: _i4.Future<void>.value(),
-            returnValueForMissingStub: _i4.Future<void>.value(),
-          )
-          as _i4.Future<void>);
+  _i4.Future<void> signOut() => (super.noSuchMethod(
+        Invocation.method(#signOut, []),
+        returnValue: _i4.Future<void>.value(),
+        returnValueForMissingStub: _i4.Future<void>.value(),
+      ) as _i4.Future<void>);
 
   @override
-  _i4.Future<_i2.User?> getCurrentUser() =>
-      (super.noSuchMethod(
-            Invocation.method(#getCurrentUser, []),
-            returnValue: _i4.Future<_i2.User?>.value(),
-          )
-          as _i4.Future<_i2.User?>);
+  _i4.Future<_i2.User?> getCurrentUser() => (super.noSuchMethod(
+        Invocation.method(#getCurrentUser, []),
+        returnValue: _i4.Future<_i2.User?>.value(),
+      ) as _i4.Future<_i2.User?>);
 }

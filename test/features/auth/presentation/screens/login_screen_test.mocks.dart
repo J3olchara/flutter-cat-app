@@ -38,36 +38,36 @@ import 'package:mockito/mockito.dart' as _i1;
 
 class _FakeSignInUseCase_0 extends _i1.SmartFake implements _i2.SignInUseCase {
   _FakeSignInUseCase_0(Object parent, Invocation parentInvocation)
-    : super(parent, parentInvocation);
+      : super(parent, parentInvocation);
 }
 
 class _FakeSignUpUseCase_1 extends _i1.SmartFake implements _i3.SignUpUseCase {
   _FakeSignUpUseCase_1(Object parent, Invocation parentInvocation)
-    : super(parent, parentInvocation);
+      : super(parent, parentInvocation);
 }
 
 class _FakeSignOutUseCase_2 extends _i1.SmartFake
     implements _i4.SignOutUseCase {
   _FakeSignOutUseCase_2(Object parent, Invocation parentInvocation)
-    : super(parent, parentInvocation);
+      : super(parent, parentInvocation);
 }
 
 class _FakeGetCurrentUserUseCase_3 extends _i1.SmartFake
     implements _i5.GetCurrentUserUseCase {
   _FakeGetCurrentUserUseCase_3(Object parent, Invocation parentInvocation)
-    : super(parent, parentInvocation);
+      : super(parent, parentInvocation);
 }
 
 class _FakeAuthRepository_4 extends _i1.SmartFake
     implements _i6.AuthRepository {
   _FakeAuthRepository_4(Object parent, Invocation parentInvocation)
-    : super(parent, parentInvocation);
+      : super(parent, parentInvocation);
 }
 
 class _FakeAnalyticsService_5 extends _i1.SmartFake
     implements _i7.AnalyticsService {
   _FakeAnalyticsService_5(Object parent, Invocation parentInvocation)
-    : super(parent, parentInvocation);
+      : super(parent, parentInvocation);
 }
 
 /// A class which mocks [AuthProvider].
@@ -79,78 +79,64 @@ class MockAuthProvider extends _i1.Mock implements _i8.AuthProvider {
   }
 
   @override
-  _i2.SignInUseCase get signInUseCase =>
-      (super.noSuchMethod(
-            Invocation.getter(#signInUseCase),
-            returnValue: _FakeSignInUseCase_0(
-              this,
-              Invocation.getter(#signInUseCase),
-            ),
-          )
-          as _i2.SignInUseCase);
+  _i2.SignInUseCase get signInUseCase => (super.noSuchMethod(
+        Invocation.getter(#signInUseCase),
+        returnValue: _FakeSignInUseCase_0(
+          this,
+          Invocation.getter(#signInUseCase),
+        ),
+      ) as _i2.SignInUseCase);
 
   @override
-  _i3.SignUpUseCase get signUpUseCase =>
-      (super.noSuchMethod(
-            Invocation.getter(#signUpUseCase),
-            returnValue: _FakeSignUpUseCase_1(
-              this,
-              Invocation.getter(#signUpUseCase),
-            ),
-          )
-          as _i3.SignUpUseCase);
+  _i3.SignUpUseCase get signUpUseCase => (super.noSuchMethod(
+        Invocation.getter(#signUpUseCase),
+        returnValue: _FakeSignUpUseCase_1(
+          this,
+          Invocation.getter(#signUpUseCase),
+        ),
+      ) as _i3.SignUpUseCase);
 
   @override
-  _i4.SignOutUseCase get signOutUseCase =>
-      (super.noSuchMethod(
-            Invocation.getter(#signOutUseCase),
-            returnValue: _FakeSignOutUseCase_2(
-              this,
-              Invocation.getter(#signOutUseCase),
-            ),
-          )
-          as _i4.SignOutUseCase);
+  _i4.SignOutUseCase get signOutUseCase => (super.noSuchMethod(
+        Invocation.getter(#signOutUseCase),
+        returnValue: _FakeSignOutUseCase_2(
+          this,
+          Invocation.getter(#signOutUseCase),
+        ),
+      ) as _i4.SignOutUseCase);
 
   @override
-  _i5.GetCurrentUserUseCase get getCurrentUserUseCase =>
-      (super.noSuchMethod(
-            Invocation.getter(#getCurrentUserUseCase),
-            returnValue: _FakeGetCurrentUserUseCase_3(
-              this,
-              Invocation.getter(#getCurrentUserUseCase),
-            ),
-          )
-          as _i5.GetCurrentUserUseCase);
+  _i5.GetCurrentUserUseCase get getCurrentUserUseCase => (super.noSuchMethod(
+        Invocation.getter(#getCurrentUserUseCase),
+        returnValue: _FakeGetCurrentUserUseCase_3(
+          this,
+          Invocation.getter(#getCurrentUserUseCase),
+        ),
+      ) as _i5.GetCurrentUserUseCase);
 
   @override
-  _i6.AuthRepository get authRepository =>
-      (super.noSuchMethod(
-            Invocation.getter(#authRepository),
-            returnValue: _FakeAuthRepository_4(
-              this,
-              Invocation.getter(#authRepository),
-            ),
-          )
-          as _i6.AuthRepository);
+  _i6.AuthRepository get authRepository => (super.noSuchMethod(
+        Invocation.getter(#authRepository),
+        returnValue: _FakeAuthRepository_4(
+          this,
+          Invocation.getter(#authRepository),
+        ),
+      ) as _i6.AuthRepository);
 
   @override
-  _i7.AnalyticsService get analyticsService =>
-      (super.noSuchMethod(
-            Invocation.getter(#analyticsService),
-            returnValue: _FakeAnalyticsService_5(
-              this,
-              Invocation.getter(#analyticsService),
-            ),
-          )
-          as _i7.AnalyticsService);
+  _i7.AnalyticsService get analyticsService => (super.noSuchMethod(
+        Invocation.getter(#analyticsService),
+        returnValue: _FakeAnalyticsService_5(
+          this,
+          Invocation.getter(#analyticsService),
+        ),
+      ) as _i7.AnalyticsService);
 
   @override
-  _i8.AuthState get state =>
-      (super.noSuchMethod(
-            Invocation.getter(#state),
-            returnValue: _i8.AuthState.initial,
-          )
-          as _i8.AuthState);
+  _i8.AuthState get state => (super.noSuchMethod(
+        Invocation.getter(#state),
+        returnValue: _i8.AuthState.initial,
+      ) as _i8.AuthState);
 
   @override
   bool get hasListeners =>
@@ -160,11 +146,10 @@ class MockAuthProvider extends _i1.Mock implements _i8.AuthProvider {
   @override
   _i9.Future<void> signIn(String? email, String? password) =>
       (super.noSuchMethod(
-            Invocation.method(#signIn, [email, password]),
-            returnValue: _i9.Future<void>.value(),
-            returnValueForMissingStub: _i9.Future<void>.value(),
-          )
-          as _i9.Future<void>);
+        Invocation.method(#signIn, [email, password]),
+        returnValue: _i9.Future<void>.value(),
+        returnValueForMissingStub: _i9.Future<void>.value(),
+      ) as _i9.Future<void>);
 
   @override
   _i9.Future<void> signUp(
@@ -173,48 +158,45 @@ class MockAuthProvider extends _i1.Mock implements _i8.AuthProvider {
     String? confirmPassword,
   ) =>
       (super.noSuchMethod(
-            Invocation.method(#signUp, [email, password, confirmPassword]),
-            returnValue: _i9.Future<void>.value(),
-            returnValueForMissingStub: _i9.Future<void>.value(),
-          )
-          as _i9.Future<void>);
+        Invocation.method(#signUp, [email, password, confirmPassword]),
+        returnValue: _i9.Future<void>.value(),
+        returnValueForMissingStub: _i9.Future<void>.value(),
+      ) as _i9.Future<void>);
 
   @override
-  _i9.Future<void> signOut() =>
-      (super.noSuchMethod(
-            Invocation.method(#signOut, []),
-            returnValue: _i9.Future<void>.value(),
-            returnValueForMissingStub: _i9.Future<void>.value(),
-          )
-          as _i9.Future<void>);
+  _i9.Future<void> signOut() => (super.noSuchMethod(
+        Invocation.method(#signOut, []),
+        returnValue: _i9.Future<void>.value(),
+        returnValueForMissingStub: _i9.Future<void>.value(),
+      ) as _i9.Future<void>);
 
   @override
   void clearError() => super.noSuchMethod(
-    Invocation.method(#clearError, []),
-    returnValueForMissingStub: null,
-  );
+        Invocation.method(#clearError, []),
+        returnValueForMissingStub: null,
+      );
 
   @override
   void addListener(_i10.VoidCallback? listener) => super.noSuchMethod(
-    Invocation.method(#addListener, [listener]),
-    returnValueForMissingStub: null,
-  );
+        Invocation.method(#addListener, [listener]),
+        returnValueForMissingStub: null,
+      );
 
   @override
   void removeListener(_i10.VoidCallback? listener) => super.noSuchMethod(
-    Invocation.method(#removeListener, [listener]),
-    returnValueForMissingStub: null,
-  );
+        Invocation.method(#removeListener, [listener]),
+        returnValueForMissingStub: null,
+      );
 
   @override
   void dispose() => super.noSuchMethod(
-    Invocation.method(#dispose, []),
-    returnValueForMissingStub: null,
-  );
+        Invocation.method(#dispose, []),
+        returnValueForMissingStub: null,
+      );
 
   @override
   void notifyListeners() => super.noSuchMethod(
-    Invocation.method(#notifyListeners, []),
-    returnValueForMissingStub: null,
-  );
+        Invocation.method(#notifyListeners, []),
+        returnValueForMissingStub: null,
+      );
 }

@@ -49,7 +49,6 @@ class _BreedDetailsScreenState extends State<BreedDetailsScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             _buildImageGallery(),
-
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: Column(
@@ -58,8 +57,8 @@ class _BreedDetailsScreenState extends State<BreedDetailsScreen> {
                   Text(
                     widget.breed.name,
                     style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                      fontWeight: FontWeight.bold,
-                    ),
+                          fontWeight: FontWeight.bold,
+                        ),
                   ),
                   const SizedBox(height: 8),
                   if (widget.breed.origin != null)
@@ -73,13 +72,14 @@ class _BreedDetailsScreenState extends State<BreedDetailsScreen> {
                         const SizedBox(width: 4),
                         Text(
                           widget.breed.origin!,
-                          style: Theme.of(context).textTheme.titleMedium
+                          style: Theme.of(context)
+                              .textTheme
+                              .titleMedium
                               ?.copyWith(color: Colors.grey[700]),
                         ),
                       ],
                     ),
                   const SizedBox(height: 24),
-
                   if (widget.breed.description != null) ...[
                     _buildSectionTitle(context, 'Описание', Icons.description),
                     const SizedBox(height: 8),
@@ -89,7 +89,6 @@ class _BreedDetailsScreenState extends State<BreedDetailsScreen> {
                     ),
                     const SizedBox(height: 24),
                   ],
-
                   _buildSectionTitle(
                     context,
                     'Характеристики',
@@ -98,7 +97,6 @@ class _BreedDetailsScreenState extends State<BreedDetailsScreen> {
                   const SizedBox(height: 16),
                   _buildCharacteristicsGrid(),
                   const SizedBox(height: 24),
-
                   if (widget.breed.temperament != null) ...[
                     _buildSectionTitle(
                       context,
@@ -121,7 +119,6 @@ class _BreedDetailsScreenState extends State<BreedDetailsScreen> {
                     ),
                     const SizedBox(height: 24),
                   ],
-
                   _buildSectionTitle(
                     context,
                     'Дополнительная информация',

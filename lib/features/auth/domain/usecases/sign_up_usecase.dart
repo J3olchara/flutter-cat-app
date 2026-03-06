@@ -6,11 +6,12 @@ class SignUpUseCase {
 
   SignUpUseCase(this.repository);
 
-  Future<User> call(String email, String password, String confirmPassword) async {
+  Future<User> call(
+      String email, String password, String confirmPassword) async {
     if (email.isEmpty || password.isEmpty || confirmPassword.isEmpty) {
       throw Exception('Все поля обязательны для заполнения');
     }
-    
+
     if (!_isValidEmail(email)) {
       throw Exception('Некорректный формат email');
     }

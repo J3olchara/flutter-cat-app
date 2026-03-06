@@ -38,7 +38,8 @@ void main() {
       expect(find.text('Войти'), findsOneWidget);
     });
 
-    testWidgets('should show validation error for empty fields', (tester) async {
+    testWidgets('should show validation error for empty fields',
+        (tester) async {
       when(mockAuthProvider.state).thenReturn(AuthState.unauthenticated);
 
       await tester.pumpWidget(createSignUpScreen());
@@ -99,8 +100,8 @@ void main() {
       await tester.tap(find.text('Зарегистрироваться'));
       await tester.pump();
 
-      expect(
-          find.text('Пароль должен содержать минимум 6 символов'), findsOneWidget);
+      expect(find.text('Пароль должен содержать минимум 6 символов'),
+          findsOneWidget);
     });
 
     testWidgets('should call signUp with valid credentials', (tester) async {
@@ -117,7 +118,8 @@ void main() {
       await tester.tap(find.text('Зарегистрироваться'));
       await tester.pump();
 
-      verify(mockAuthProvider.signUp('test@example.com', 'password123', 'password123'))
+      verify(mockAuthProvider.signUp(
+              'test@example.com', 'password123', 'password123'))
           .called(1);
     });
 

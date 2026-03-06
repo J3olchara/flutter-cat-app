@@ -10,7 +10,7 @@ class SignInUseCase {
     if (email.isEmpty || password.isEmpty) {
       throw Exception('Email и пароль не могут быть пустыми');
     }
-    
+
     if (!_isValidEmail(email)) {
       throw Exception('Некорректный формат email');
     }

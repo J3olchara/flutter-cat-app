@@ -79,7 +79,8 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
     });
   }
 
-  Exception _handleFirebaseAuthException(firebase_auth.FirebaseAuthException e) {
+  Exception _handleFirebaseAuthException(
+      firebase_auth.FirebaseAuthException e) {
     switch (e.code) {
       case 'user-not-found':
         return Exception('Пользователь с таким email не найден');

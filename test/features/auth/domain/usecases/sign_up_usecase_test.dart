@@ -31,7 +31,8 @@ void main() {
       when(mockAuthRepository.signUp(testEmail, testPassword))
           .thenAnswer((_) async => testUser);
 
-      final result = await useCase(testEmail, testPassword, testConfirmPassword);
+      final result =
+          await useCase(testEmail, testPassword, testConfirmPassword);
 
       expect(result, equals(testUser));
       verify(mockAuthRepository.signUp(testEmail, testPassword));
