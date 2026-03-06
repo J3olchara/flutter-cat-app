@@ -3,7 +3,7 @@
 Мобильное приложение для знакомства с породами кошек в стиле Tinder. Листайте карточки котиков, лайкайте понравившихся, изучайте информацию о породах!
 
 [![Flutter CI/CD](https://github.com/YOUR_USERNAME/flutter/actions/workflows/flutter.yml/badge.svg)](https://github.com/YOUR_USERNAME/flutter/actions/workflows/flutter.yml)
-[![Flutter Version](https://img.shields.io/badge/Flutter-3.24.0-blue.svg)](https://flutter.dev/)
+[![Flutter Version](https://img.shields.io/badge/Flutter-3.38.4-blue.svg)](https://flutter.dev/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
 ## 📱 Скриншоты
@@ -80,7 +80,7 @@
 ## 🛠️ Технологии
 
 ### Основные
-- **Flutter 3.24.0** - фреймворк для кросс-платформенной разработки
+- **Flutter 3.38.4** - фреймворк для кросс-платформенной разработки
 - **Dart 3.10.3** - язык программирования
 
 ### Архитектура и паттерны
@@ -146,8 +146,8 @@ test/
 ## 🚀 Быстрый старт
 
 ### Предварительные требования
-- Flutter SDK 3.24.0 или выше
-- Dart SDK 3.10.3 или выше
+- Flutter SDK 3.38.4 или выше
+- Dart SDK 3.8.0 или выше
 - Android Studio / VS Code
 - Firebase проект (для функций авторизации и аналитики)
 
