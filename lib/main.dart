@@ -2,14 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'providers/cat_provider.dart';
-import 'screens/tab_bar_screen.dart';
 import 'core/di/injection_container.dart';
 import 'features/auth/presentation/screens/auth_wrapper_screen.dart';
 import 'services/firebase_messaging_service.dart';
 import 'services/app_lifecycle_service.dart';
-
-late AppLifecycleService _lifecycleService;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -24,7 +20,7 @@ void main() async {
   final messagingService = FirebaseMessagingService();
   await messagingService.initialize();
 
-  _lifecycleService = AppLifecycleService(messagingService.localNotifications);
+  AppLifecycleService(messagingService.localNotifications);
 
   messagingService.scheduleWelcomeNotification(delaySeconds: 15);
 

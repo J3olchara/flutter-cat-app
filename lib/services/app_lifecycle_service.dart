@@ -32,7 +32,7 @@ class AppLifecycleService with WidgetsBindingObserver {
   }
 
   void _onAppGoesToBackground() {
-    print('Приложение ушло в фон');
+    debugPrint('Приложение ушло в фон');
     _backgroundTime = DateTime.now();
 
     _reEngagementTimer?.cancel();
@@ -43,20 +43,20 @@ class AppLifecycleService with WidgetsBindingObserver {
   }
 
   void _onAppReturnsToForeground() {
-    print('Приложение вернулось на передний план');
+    debugPrint('Приложение вернулось на передний план');
 
     _reEngagementTimer?.cancel();
     _reEngagementTimer = null;
 
     if (_backgroundTime != null) {
       final duration = DateTime.now().difference(_backgroundTime!);
-      print('Пользователь вернулся через ${duration.inSeconds} секунд');
+      debugPrint('Пользователь вернулся через ${duration.inSeconds} секунд');
       _backgroundTime = null;
     }
   }
 
   Future<void> _showReEngagementNotification() async {
-    print('Показываем уведомление для возврата пользователя');
+    debugPrint('Показываем уведомление для возврата пользователя');
 
     const androidDetails = AndroidNotificationDetails(
       'high_importance_channel',
@@ -84,10 +84,10 @@ class AppLifecycleService with WidgetsBindingObserver {
     );
 
     await _localNotifications.show(
-      999,
-      'Котики скучают! 😿',
-      'У нас тут столько милых котиков скучают по тебе! Заходи скорее 💕',
-      details,
+      id: 999,
+      title: 'Котики скучают! 😿',
+      body: 'У нас тут столько милых котиков скучают по тебе! Заходи скорее 💕',
+      notificationDetails: details,
       payload: 're_engagement',
     );
   }
