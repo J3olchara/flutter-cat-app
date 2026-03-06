@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "881118145202",
+    "project_id": "kototinder-ee935",
+    "storage_bucket": "kototinder-ee935.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:881118145202:android:626655dfe2d16a7b0737ab",
+        "android_client_info": {
+          "package_name": "com.kototinder.kototinder"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDHOQTI1h6eGIy-JJGy3MTf_C2nuDbmRLI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,7 +1,7 @@
 # Релизы Кототиндер
 
 
-📦 [kototinder-v1.0.0.apk](https://disk.yandex.ru/d/svk71XRcob1HsA)
+[Github releases](https://github.com/J3olchara/flutter-cat-app/releases)
 
 ### Технические детали:
 - Flutter SDK: 3.10.3+
