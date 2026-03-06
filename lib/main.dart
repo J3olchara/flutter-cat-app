@@ -1,9 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'providers/cat_provider.dart';
 import 'screens/tab_bar_screen.dart';
+import 'services/firebase_messaging_service.dart';
+import 'services/app_lifecycle_service.dart';
 
-void main() {
+late AppLifecycleService _lifecycleService;
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  
+  await Firebase.initializeApp();
+  
+  FirebaseMessaging.onBackgroundMessage(firebaseMessagingBackgroundHandler);
+  
+  final messagingService = FirebaseMessagingService();
+  await messagingService.initialize();
+  
+  _lifecycleService = AppLifecycleService(messagingService.localNotifications);
+  
+  messagingService.scheduleWelcomeNotification(delaySeconds: 15);
+  
   runApp(const MyApp());
 }
 
