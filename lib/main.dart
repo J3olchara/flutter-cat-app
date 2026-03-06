@@ -10,10 +10,10 @@ import 'services/app_lifecycle_service.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
+  await Firebase.initializeApp();
+
   final di = InjectionContainer();
   di.init();
-
-  await Firebase.initializeApp();
 
   FirebaseMessaging.onBackgroundMessage(firebaseMessagingBackgroundHandler);
 
