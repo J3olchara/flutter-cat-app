@@ -1,4 +1,5 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'dart:io';
 
@@ -11,22 +12,22 @@ class FirebaseMessagingService {
 
   static const AndroidNotificationChannel _androidChannel =
       AndroidNotificationChannel(
-    'high_importance_channel',
-    'Важные уведомления',
-    description: 'Канал для важных push-уведомлений',
-    importance: Importance.high,
-    playSound: true,
-    enableVibration: true,
-  );
+        'high_importance_channel',
+        'Важные уведомления',
+        description: 'Канал для важных push-уведомлений',
+        importance: Importance.high,
+        playSound: true,
+        enableVibration: true,
+      );
 
   Future<void> initialize() async {
     await _requestPermissions();
     await _initializeLocalNotifications();
     await _configureFCM();
-    
+
     final token = await getToken();
     if (token != null) {
-      print('FCM Token: $token');
+      debugPrint('FCM Token: $token');
     }
   }
 
@@ -44,13 +45,16 @@ class FirebaseMessagingService {
     } else if (Platform.isAndroid) {
       await _localNotifications
           .resolvePlatformSpecificImplementation<
-              AndroidFlutterLocalNotificationsPlugin>()
+            AndroidFlutterLocalNotificationsPlugin
+          >()
           ?.requestNotificationsPermission();
     }
   }
 
   Future<void> _initializeLocalNotifications() async {
-    const androidSettings = AndroidInitializationSettings('@mipmap/ic_launcher');
+    const androidSettings = AndroidInitializationSettings(
+      '@mipmap/ic_launcher',
+    );
     const iosSettings = DarwinInitializationSettings(
       requestAlertPermission: true,
       requestBadgePermission: true,
@@ -63,14 +67,15 @@ class FirebaseMessagingService {
     );
 
     await _localNotifications.initialize(
-      initSettings,
+      settings: initSettings,
       onDidReceiveNotificationResponse: _onNotificationTapped,
     );
 
     if (Platform.isAndroid) {
       await _localNotifications
           .resolvePlatformSpecificImplementation<
-              AndroidFlutterLocalNotificationsPlugin>()
+            AndroidFlutterLocalNotificationsPlugin
+          >()
           ?.createNotificationChannel(_androidChannel);
     }
   }
@@ -78,7 +83,7 @@ class FirebaseMessagingService {
   Future<void> _configureFCM() async {
     FirebaseMessaging.onMessage.listen(_handleForegroundMessage);
     FirebaseMessaging.onMessageOpenedApp.listen(_handleBackgroundTap);
-    
+
     final initialMessage = await _firebaseMessaging.getInitialMessage();
     if (initialMessage != null) {
       _handleBackgroundTap(initialMessage);
@@ -86,8 +91,8 @@ class FirebaseMessagingService {
   }
 
   void _handleForegroundMessage(RemoteMessage message) {
-    print('Получено уведомление на переднем плане: ${message.messageId}');
-    
+    debugPrint('Получено уведомление на переднем плане: ${message.messageId}');
+
     final notification = message.notification;
 
     if (notification != null) {
@@ -100,11 +105,11 @@ class FirebaseMessagingService {
   }
 
   void _handleBackgroundTap(RemoteMessage message) {
-    print('Уведомление открыто: ${message.messageId}');
+    debugPrint('Уведомление открыто: ${message.messageId}');
   }
 
   void _onNotificationTapped(NotificationResponse response) {
-    print('Нажато на уведомление: ${response.payload}');
+    debugPrint('Нажато на уведомление: ${response.payload}');
   }
 
   Future<void> _showLocalNotification({
@@ -134,10 +139,10 @@ class FirebaseMessagingService {
     );
 
     await _localNotifications.show(
-      DateTime.now().millisecond,
-      title,
-      body,
-      details,
+      id: DateTime.now().millisecond,
+      title: title,
+      body: body,
+      notificationDetails: details,
       payload: payload,
     );
   }
@@ -147,7 +152,7 @@ class FirebaseMessagingService {
       final token = await _firebaseMessaging.getToken();
       return token;
     } catch (e) {
-      print('Ошибка получения FCM токена: $e');
+      debugPrint('Ошибка получения FCM токена: $e');
       return null;
     }
   }
@@ -155,36 +160,36 @@ class FirebaseMessagingService {
   Future<void> subscribeToTopic(String topic) async {
     try {
       await _firebaseMessaging.subscribeToTopic(topic);
-      print('Подписка на топик: $topic');
+      debugPrint('Подписка на топик: $topic');
     } catch (e) {
-      print('Ошибка подписки на топик: $e');
+      debugPrint('Ошибка подписки на топик: $e');
     }
   }
 
   Future<void> unsubscribeFromTopic(String topic) async {
     try {
       await _firebaseMessaging.unsubscribeFromTopic(topic);
-      print('Отписка от топика: $topic');
+      debugPrint('Отписка от топика: $topic');
     } catch (e) {
-      print('Ошибка отписки от топика: $e');
+      debugPrint('Ошибка отписки от топика: $e');
     }
   }
 
   Future<void> scheduleWelcomeNotification({int delaySeconds = 15}) async {
     await Future.delayed(Duration(seconds: delaySeconds));
-    
+
     await _showLocalNotification(
       title: 'Привет, котолюбитель! 🐱',
-      body: 'Не забудь посмотреть на милых котиков сегодня! Свайпай вправо, если понравился ❤️',
+      body:
+          'Не забудь посмотреть на милых котиков сегодня! Свайпай вправо, если понравился ❤️',
       payload: 'welcome_notification',
     );
   }
 
-  void dispose() {
-  }
+  void dispose() {}
 }
 
 @pragma('vm:entry-point')
 Future<void> firebaseMessagingBackgroundHandler(RemoteMessage message) async {
-  print('Обработка фонового сообщения: ${message.messageId}');
+  debugPrint('Обработка фонового сообщения: ${message.messageId}');
 }
