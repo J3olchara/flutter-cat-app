@@ -1,59 +1,81 @@
-# Настройка проекта Кототиндер
+# Кототиндер Про
 
-### Запустить приложение
+Мобильное приложение для знакомства с породами кошек.
+
+## Реализованные фичи
+
+### ДЗ-1
+- Свайпы котиков влево/вправо
+- Лайки и дизлайки с счетчиком
+- Детальная информация о породах
+- Список всех пород с поиском
+- Обработка ошибок
+- Push-уведомления
+
+### ДЗ-2 (скриншоты в папке screenshots/hw2)
+- Онбординг с анимациями (3 шага)
+- Firebase Authentication (регистрация/вход)
+- Firebase Analytics (события)
+- Clean Architecture (Data/Domain/Presentation)
+- Unit-тесты (14 тестов)
+- Widget-тесты (16 тестов)
+- CI/CD на GitHub Actions
+
+## Технологии
+
+- Flutter 3.38.4
+- Dart 3.10.3
+- Firebase (Auth, Analytics, Messaging)
+- Provider (state management)
+- Dio (HTTP клиент)
+- TheCatAPI
+- Mockito (тестирование)
+
+## Структура
+
+```
+lib/
+├── core/
+│   ├── analytics/
+│   └── di/
+├── features/
+│   ├── auth/
+│   ├── onboarding/
+│   └── cats/
+└── services/
+```
+
+## Запуск
 
 ```bash
 flutter pub get
 flutter run
 ```
 
-## сборка билда
+## Тестирование
 
-1. Обновите версию в `pubspec.yaml`
-2. Соберите APK:
+```bash
+flutter test
+```
+
+## Сборка APK
+
 ```bash
 flutter build apk --release
 ```
 
-### Настроить API ключ
+APK находится в `build/app/outputs/flutter-apk/app-release.apk`
 
-Для избежания rate limits от TheCatAPI:
+## Настройка Firebase
 
-1. Зарегистрируйтесь на https://thecatapi.com
-2. Получите API ключ
-3. Откройте `lib/services/cat_api_service.dart`
-4. Замените `static const String? _apiKey = null;` на ваш ключ
+1. Создайте проект в Firebase Console
+2. Включите Authentication (Email/Password)
+3. Включите Analytics
+4. Скачайте конфигурационные файлы:
+   - `google-services.json` → `android/app/`
+   - `GoogleService-Info.plist` → `ios/Runner/`
 
-### Тестирование
+## API ключ TheCatAPI
 
-Запустите приложение и протестируйте все функции:
-- Свайпы работают
-- Лайки сохраняются
-- Поиск пород работает
-- Детальные экраны отображаются корректно
-- Ошибки обрабатываются
-
-## все сделал на десятку
-
-### функциональные требования
-- Случайное изображение котика с названием породы
-- Свайп влево/вправо + кнопки лайк/дизлайк
-- Смена котика при действии
-- Счетчик лайков увеличивается
-- Детальное описание при клике на изображение
-- Вся информация о породе на детальном экране
-- Таб-бар с экраном "Список пород"
-- Детальная информация о породе при клике
-
-### статический анализ
-- dart format
-- flutter_lints
-- flutter analyze
-
-### технические требования
-- Используется dio для API запросов
-- Endpoints /search и /breeds используются
-- CachedNetworkImage для изображений
-- Конфигурация для кастомной иконки готова
-- Все ошибки обработаны с диалогами
-
+Опционально: зарегистрируйтесь на thecatapi.com и добавьте ключ в:
+`lib/features/cats/data/datasources/cat_remote_datasource.dart`

@@ -2,37 +2,43 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'providers/cat_provider.dart';
-import 'screens/tab_bar_screen.dart';
+import 'core/di/injection_container.dart';
+import 'features/auth/presentation/screens/auth_wrapper_screen.dart';
 import 'services/firebase_messaging_service.dart';
 import 'services/app_lifecycle_service.dart';
 
-late AppLifecycleService _lifecycleService;
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  
+
   await Firebase.initializeApp();
-  
+
+  final di = InjectionContainer();
+  di.init();
+
   FirebaseMessaging.onBackgroundMessage(firebaseMessagingBackgroundHandler);
-  
+
   final messagingService = FirebaseMessagingService();
   await messagingService.initialize();
-  
-  _lifecycleService = AppLifecycleService(messagingService.localNotifications);
-  
+
+  AppLifecycleService(messagingService.localNotifications);
+
   messagingService.scheduleWelcomeNotification(delaySeconds: 15);
-  
-  runApp(const MyApp());
+
+  runApp(MyApp(di: di));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final InjectionContainer di;
+
+  const MyApp({super.key, required this.di});
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (_) => CatProvider(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => di.createAuthProvider()),
+        ChangeNotifierProvider(create: (_) => di.createCatProvider()),
+      ],
       child: MaterialApp(
         title: 'Кототиндер',
         debugShowCheckedModeBanner: false,
@@ -50,7 +56,8 @@ class MyApp extends StatelessWidget {
           ),
           appBarTheme: const AppBarTheme(centerTitle: true, elevation: 0),
         ),
-        home: const TabBarScreen(),
+        navigatorObservers: [di.analyticsService.getAnalyticsObserver()],
+        home: AuthWrapperScreen(analyticsService: di.analyticsService),
       ),
     );
   }

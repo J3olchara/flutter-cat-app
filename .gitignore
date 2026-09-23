@@ -55,10 +55,6 @@ app.*.map.json
 *_NOTES.md
 QUICK_START.md
 
-# Generated icons (can be regenerated)
-/android/app/src/main/res/mipmap-*/
-/ios/Runner/Assets.xcassets/AppIcon.appiconset/
-
 # Local configuration
 .env
 .env.local
